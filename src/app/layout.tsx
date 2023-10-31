@@ -16,6 +16,8 @@ import {
 } from "@/image/nav/index";
 import ColorButton from "./components/ui/ColorButton";
 import NavBar from "./components/NavBar";
+import { SessionProvider } from "next-auth/react";
+import AuthContext from "@/context/AuthContext";
 const openSans = Open_Sans({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -49,9 +51,11 @@ export default function RootLayout({
   ];
   return (
     <html className={openSans.className}>
-      <body>
-        <NavBar />
-        {children}
+      <body className=" overflow-auto ">
+        <AuthContext>
+          <NavBar />
+          <main>{children}</main>
+        </AuthContext>
       </body>
     </html>
   );

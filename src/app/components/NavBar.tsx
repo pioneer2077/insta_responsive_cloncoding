@@ -14,6 +14,8 @@ import {
 } from "@/image/nav/index";
 import NavItem from "./NavItem";
 import ROUTES from "../routes";
+import { signIn, signOut, useSession } from "next-auth/react";
+
 export default function NavBar() {
   const listArray: INavItem[] = [
     {
@@ -61,27 +63,19 @@ export default function NavBar() {
           </ul>
         </nav>
       )) || (
-        <div className=" flex justify-center border">
+        <div className=" flex justify-center border-b">
           <div className=" w-screen lap:max-w-1152px flex justify-between h-14 items-center px-5">
             <div className=" flex h-full w-40 bg-amber-300 text-3xl items-center">
-              {/* flex w-full pl-3 my-1 rounded-md items-center justify-start  */}
-
               <Instagram />
             </div>
             <div className=" flex">
-              <Link
-                href={"/"}
-                className=" bg-primary rounded-md px-4 py-1.5 font-medium text-sm text-white cursor-pointer "
-              >
-                로그인
-              </Link>
-              {/* <Link
-                  href={"/"}
-                  className="rounded-md px-4 py-1.5 font-medium text-sm text-blue cursor-pointer"
-                >
-                  가입하기
-                </Link> */}
-              {/* <ColorButton bgColor="primary" /> */}
+              <ColorButton
+                buttonColor="blue"
+                onClick={() => {
+                  signIn();
+                }}
+                text="로그인"
+              />
               <ColorButton
                 buttonColor="white"
                 onClick={() => null}
