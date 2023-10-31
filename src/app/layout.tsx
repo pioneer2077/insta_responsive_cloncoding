@@ -1,7 +1,21 @@
 import type { Metadata } from "next";
-import { Inter, Open_Sans } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import "./globals.css";
-
+import Link from "next/link";
+import Search from "@/image/nav/Search.svg";
+import { INavItem } from "./type/nav";
+import ROUTES from "./routes";
+import NavItem from "./components/NavItem";
+import {
+  AddPost,
+  Clicked_Home_icon,
+  Clicked_Search_Icon,
+  Home_icon,
+  Instagram,
+  Instagram_logo,
+} from "@/image/nav/index";
+import ColorButton from "./components/ui/ColorButton";
+import NavBar from "./components/NavBar";
 const openSans = Open_Sans({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,9 +27,32 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const listArray: INavItem[] = [
+    {
+      title: "홈",
+      href: ROUTES.HOME.HOME,
+      icon: <Home_icon />,
+      clickedIcon: <Clicked_Home_icon />,
+    },
+    {
+      title: "검색",
+      href: ROUTES.SEARCH.HOME,
+      icon: <Search />,
+      clickedIcon: <Clicked_Search_Icon />,
+    },
+    {
+      title: "탐색",
+      href: ROUTES.POST.HOME,
+      icon: <AddPost />,
+      clickedIcon: <AddPost />,
+    },
+  ];
   return (
     <html className={openSans.className}>
-      <body>{children}</body>
+      <body>
+        <NavBar />
+        {children}
+      </body>
     </html>
   );
 }
