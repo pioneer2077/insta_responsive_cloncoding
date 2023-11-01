@@ -16,6 +16,8 @@ const config: Config = {
     },
     maxWidth: {
       "1152px": "1152px",
+      "244px": "244px",
+      "72px": "72px",
     },
     minWidth: {
       "244px": "244px",

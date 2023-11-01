@@ -6,21 +6,14 @@ type Props = {
   title: string;
   icon: React.ReactNode;
   clickedIcon?: React.ReactNode;
-  path: string;
 };
-export default function NavItem({
-  href,
-  icon,
-  title,
-  clickedIcon,
-  path,
-}: Props) {
+export default function NavItem({ href, icon, title, clickedIcon }: Props) {
   const pathname = usePathname();
   return (
     <li className=" flex w-full h-14 ">
       <div className=" flex w-full pl-3 my-1 rounded-md items-center justify-start hover:bg-secondary cursor-pointer">
         <Link href={href} className=" flex">
-          {pathname === path ? clickedIcon : icon}
+          {pathname === href ? clickedIcon : icon}
           <p className=" pl-4  max-desktop:hidden ">{title}</p>
         </Link>
       </div>

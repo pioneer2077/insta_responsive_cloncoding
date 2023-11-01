@@ -51,7 +51,7 @@ export default function RootLayout({
   ];
   return (
     <html className={openSans.className}>
-      <body className=" overflow-auto ">
+      <body className="">
         <AuthContext>
           <NavBar />
           <main>{children}</main>
