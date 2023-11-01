@@ -29,6 +29,7 @@ const config: Config = {
     backgroundColor: {
       primary: "#4193ef",
       secondary: "#f2f2f2",
+      white: "#ffffff",
     },
     textColor: {
       blue: "#4193ef",

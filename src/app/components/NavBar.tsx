@@ -17,7 +17,7 @@ import NavItem from "./NavItem";
 import ROUTES from "../routes";
 import { signIn, signOut, useSession } from "next-auth/react";
 import SvgButton from "./ui/SvgButton";
-
+import Image from "next/image";
 export default function NavBar() {
   const { data: session, status } = useSession();
   const [isMenuVisible, setMenuVisible] = useState(false);
@@ -25,9 +25,6 @@ export default function NavBar() {
     setMenuVisible(!isMenuVisible);
   };
 
-  const closeMenu = () => {
-    setMenuVisible(false);
-  };
   const listArray: INavItem[] = [
     {
       title: "홈",
@@ -50,7 +47,7 @@ export default function NavBar() {
   ];
   return (
     <>
-      {(session === null && (
+      {(session == null && session == undefined && (
         <div className=" flex justify-center border-b">
           <div className=" w-screen lap:max-w-1152px flex justify-between h-14 items-center px-5">
             <div className=" flex h-full w-40 bg-amber-300 text-3xl items-center">
@@ -73,9 +70,8 @@ export default function NavBar() {
           </div>
         </div>
       )) || (
-        <nav className=" sticky top-0 left-0 border-r p-3 h-screen max-w-244px max-tablet:hidden max-desktop:max-w-72px">
-          {/* <nav className=" bg-secondary flex-col justify-between fixed top-0 left-0 z-10 border-r px-3 py-3  min-h-100vh max-tablet:hidden desktop:min-w-244px"> */}
-
+        // <nav className=" fixed top-0 left-0 border-r p-3 h-screen max-w-244px max-tablet:hidden max-desktop:max-w-px">
+        <nav className=" fixed top-0 left-0 border-r px-3 py-3  min-h-100vh max-tablet:hidden desktop:min-w-244px">
           <div className="">
             <div className=" w-full h-24 flex items-center justify-start pl-3">
               <Link href={"/"}>
@@ -97,7 +93,7 @@ export default function NavBar() {
               })}
             </ul>
             {isMenuVisible && (
-              <div className=" absolute max-lap:ml-20 w-60 bg-secondary ">
+              <div className=" absolute ml-64 max-lap:ml-20 w-60 bg-secondary ">
                 <ul>
                   <ColorButton
                     buttonColor="white"
@@ -107,12 +103,22 @@ export default function NavBar() {
                 </ul>
               </div>
             )}
-            <div className="bottom-0 pb-3">
+            <div className="">
               <SvgButton
                 title="더보기"
                 onClick={toggleMenu}
                 svg={<Nav_hamburger />}
               />
+              {session && (
+                <Image
+                  priority
+                  width={40}
+                  height={40}
+                  className=" rounded-full "
+                  alt=""
+                  src={session?.user?.image!}
+                ></Image>
+              )}
             </div>
           </div>
         </nav>

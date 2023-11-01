@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function page() {
-  return <div>page2</div>;
+  return <div className=" ml-72">page2</div>;
 }
