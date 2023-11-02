@@ -6,7 +6,14 @@ import { getProviders, signIn } from "next-auth/react";
 import ColorButton from "@/app/components/ui/ColorButton";
 import Signin from "@/app/components/Signin";
 
-export default async function SignInPage() {
+type Props = {
+  searchParams: {
+    callbackUrl: string;
+  };
+};
+export default async function SignInPage({
+  searchParams: { callbackUrl },
+}: Props) {
   const session = await getServerSession(authOptions);
   if (session) {
     redirect("/");
@@ -17,7 +24,7 @@ export default async function SignInPage() {
       <div className="w-full h-full ">
         <div className=" w-full h-3/4  flex justify-center items-center">
           <div className="h-96 w-80 bg-primary">
-            <Signin providers={providers} />
+            <Signin providers={providers} callbackUrl={callbackUrl ?? "/"} />
           </div>
         </div>
         <div className="w-full h-1/4"></div>

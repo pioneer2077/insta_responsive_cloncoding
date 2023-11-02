@@ -18,13 +18,14 @@ import ROUTES from "../routes";
 import { signIn, signOut, useSession } from "next-auth/react";
 import SvgButton from "./ui/SvgButton";
 import Image from "next/image";
+import Avatar from "./Avatar";
 export default function NavBar() {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
+  const user = session?.user;
   const [isMenuVisible, setMenuVisible] = useState(false);
   const toggleMenu = () => {
     setMenuVisible(!isMenuVisible);
   };
-
   const listArray: INavItem[] = [
     {
       title: "홈",
@@ -109,15 +110,10 @@ export default function NavBar() {
                 onClick={toggleMenu}
                 svg={<Nav_hamburger />}
               />
-              {session && (
-                <Image
-                  priority
-                  width={40}
-                  height={40}
-                  className=" rounded-full "
-                  alt=""
-                  src={session?.user?.image!}
-                ></Image>
+              {user && (
+                <Link href={`/user/${user.username}`}>
+                  <Avatar image={user.image} />
+                </Link>
               )}
             </div>
           </div>
