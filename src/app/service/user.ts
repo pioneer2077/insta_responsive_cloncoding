@@ -13,7 +13,5 @@ export function addUser({ id, image, name, email, username }: IUser) {
     followers: [],
     bookmarks: [],
   };
-  client.createIfNotExists(loginUser).then((res) => {
-    console.log(res);
-  });
+  client.createIfNotExists(loginUser).then((res) => {});
 }

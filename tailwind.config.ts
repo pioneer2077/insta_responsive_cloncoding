@@ -8,12 +8,30 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      margin: {
+        "244px": "244px",
+        "72px": "72px",
+      },
+      height: {
+        "101px": "101px",
+        "81px": "81px",
+        "56px": "56px",
+        "52px": "52px",
+      },
+      width: {
+        "1014px": "1014px",
+        "630px": "630px",
+        "383px": "383px",
+        "56px": "56px",
+        "52px": "52px",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
+
     maxWidth: {
       "1152px": "1152px",
       "244px": "244px",
@@ -34,6 +52,7 @@ const config: Config = {
     textColor: {
       blue: "#4193ef",
       white: "#ffffff",
+      gray: "#737373",
     },
 
     screens: {

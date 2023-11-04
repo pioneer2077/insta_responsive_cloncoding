@@ -4,8 +4,14 @@ type Props = {
   onClick: () => void;
   text: string;
   buttonColor: "blue" | "white";
+  textSize?: "sm" | "md";
 };
-export default function ColorButton({ onClick, text, buttonColor }: Props) {
+export default function ColorButton({
+  onClick,
+  text,
+  buttonColor,
+  textSize,
+}: Props) {
   return (
     <button
       onClick={onClick}
@@ -16,7 +22,7 @@ export default function ColorButton({ onClick, text, buttonColor }: Props) {
           buttonColor === "white",
       })}
     >
-      {text}
+      {textSize === "sm" ? <p className=" text-xs">{text}</p> : <p>{text}</p>}
     </button>
   );
 }

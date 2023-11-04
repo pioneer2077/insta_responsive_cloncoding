@@ -19,6 +19,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import SvgButton from "./ui/SvgButton";
 import Image from "next/image";
 import Avatar from "./Avatar";
+import { createClient } from "next-sanity";
 export default function NavBar() {
   const { data: session } = useSession();
   const user = session?.user;
@@ -48,7 +49,7 @@ export default function NavBar() {
   ];
   return (
     <>
-      {(session == null && session == undefined && (
+      {(session == undefined && session == null && (
         <div className=" flex justify-center border-b">
           <div className=" w-screen lap:max-w-1152px flex justify-between h-14 items-center px-5">
             <div className=" flex h-full w-40 bg-amber-300 text-3xl items-center">
@@ -72,50 +73,48 @@ export default function NavBar() {
         </div>
       )) || (
         // <nav className=" fixed top-0 left-0 border-r p-3 h-screen max-w-244px max-tablet:hidden max-desktop:max-w-px">
-        <nav className=" fixed top-0 left-0 border-r px-3 py-3  min-h-100vh max-tablet:hidden desktop:min-w-244px">
+        <nav className="border-[1px] border-[#dbdbdb] border-solid border-t-0 border-b-0 border-l-0 fixed top-0 left-0  px-3 py-3  min-h-100vh max-tablet:hidden desktop:min-w-244px">
+          <div className=" w-full h-[70px] flex items-center justify-start pl-3 mb-5">
+            <Link href={"/"}>
+              <Instagram className=" max-desktop:hidden" />
+              <Instagram_logo className=" hidden max-desktop:block" />
+            </Link>
+          </div>
+          <ul className="min-w-48px ">
+            {listArray.map(({ clickedIcon, href, icon, title }: INavItem) => {
+              return (
+                <NavItem
+                  key={title}
+                  href={href}
+                  title={title}
+                  icon={icon}
+                  clickedIcon={clickedIcon}
+                />
+              );
+            })}
+          </ul>
+          {isMenuVisible && (
+            <div className=" absolute ml-64 max-lap:ml-20 w-60 bg-secondary ">
+              <ul>
+                <ColorButton
+                  buttonColor="white"
+                  onClick={signOut}
+                  text="로그아웃"
+                />
+              </ul>
+            </div>
+          )}
           <div className="">
-            <div className=" w-full h-24 flex items-center justify-start pl-3">
-              <Link href={"/"}>
-                <Instagram className=" max-desktop:hidden" />
-                <Instagram_logo className=" hidden max-desktop:block" />
+            <SvgButton
+              title="더보기"
+              onClick={toggleMenu}
+              svg={<Nav_hamburger />}
+            />
+            {user && (
+              <Link href={`/user/${user.username}`}>
+                <Avatar big={false} border={true} image={user.image} />
               </Link>
-            </div>
-            <ul className="min-w-48px ">
-              {listArray.map(({ clickedIcon, href, icon, title }: INavItem) => {
-                return (
-                  <NavItem
-                    key={title}
-                    href={href}
-                    title={title}
-                    icon={icon}
-                    clickedIcon={clickedIcon}
-                  />
-                );
-              })}
-            </ul>
-            {isMenuVisible && (
-              <div className=" absolute ml-64 max-lap:ml-20 w-60 bg-secondary ">
-                <ul>
-                  <ColorButton
-                    buttonColor="white"
-                    onClick={signOut}
-                    text="로그아웃"
-                  />
-                </ul>
-              </div>
             )}
-            <div className="">
-              <SvgButton
-                title="더보기"
-                onClick={toggleMenu}
-                svg={<Nav_hamburger />}
-              />
-              {user && (
-                <Link href={`/user/${user.username}`}>
-                  <Avatar image={user.image} />
-                </Link>
-              )}
-            </div>
           </div>
         </nav>
       )}

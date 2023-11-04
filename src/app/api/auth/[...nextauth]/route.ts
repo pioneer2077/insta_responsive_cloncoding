@@ -28,35 +28,13 @@ const authOptions: NextAuthOptions = {
       return session;
     },
     async signIn({ user: { id, email, image, name } }) {
-      // if (!email) return false;
-      // addUser({
-      //   id,
-      //   email,
-      //   image,
-      //   name: name || "",
-      //   username: email.split("@")[0],
-      // });
-      // console.log(1111);
-      const client = createClient({
-        projectId: process.env.SANITY_PROJECT_ID,
-        dataset: "production",
-        apiVersion: "2023-11-25",
-        useCdn: false,
-        token: process.env.SANITY_SECRET_TOKEN,
-      });
-      const loginUser = {
-        _id: id,
-        _type: "user",
-        name,
+      if (!email) return false;
+      addUser({
+        id,
         email,
         image,
-        username: email?.split("@")[0] || "",
-        following: [],
-        followers: [],
-        bookmarks: [],
-      };
-      client.createIfNotExists(loginUser).then((res) => {
-        console.log(res);
+        name: name || "",
+        username: email.split("@")[0],
       });
       return true;
     },

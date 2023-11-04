@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
@@ -14,7 +15,9 @@ export default function NavItem({ href, icon, title, clickedIcon }: Props) {
       <div className=" flex w-full pl-3 my-1 rounded-md items-center justify-start hover:bg-secondary cursor-pointer">
         <Link href={href} className=" flex">
           {pathname === href ? clickedIcon : icon}
-          <p className=" pl-4  max-desktop:hidden ">{title}</p>
+          <p className=" flex items-center pl-4  max-desktop:hidden ">
+            {title}
+          </p>
         </Link>
       </div>
     </li>
