@@ -14,7 +14,7 @@ export default function ShowMeMain({
   return (
     <NavItemUser
       onClick={() => null}
-      discription={email}
+      description={email}
       title={username}
       image={image}
       text="전환"

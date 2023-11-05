@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@svgr/webpack": "^8.1.0",
+    "axios": "^1.6.0",
     "clsx": "^2.0.0",
     "dotenv": "^16.3.1",
     "next": "13.5.6",
@@ -18,7 +19,10 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.11.0",
-    "ser": "^0.1.2"
+    "react-multi-carousel": "^2.8.4",
+    "react-spinners": "^0.13.8",
+    "ser": "^0.1.2",
+    "swr": "^2.2.4"
   },
   "devDependencies": {
     "@types/node": "^20",

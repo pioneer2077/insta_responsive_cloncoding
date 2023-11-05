@@ -21,7 +21,8 @@ import Image from "next/image";
 import Avatar from "./Avatar";
 import { createClient } from "next-sanity";
 export default function NavBar() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  console.log(status);
   const user = session?.user;
   const [isMenuVisible, setMenuVisible] = useState(false);
   const toggleMenu = () => {
@@ -49,7 +50,7 @@ export default function NavBar() {
   ];
   return (
     <>
-      {(session == undefined && session == null && (
+      {status === "unauthenticated" ? (
         <div className=" flex justify-center border-b">
           <div className=" w-screen lap:max-w-1152px flex justify-between h-14 items-center px-5">
             <div className=" flex h-full w-40 bg-amber-300 text-3xl items-center">
@@ -71,7 +72,7 @@ export default function NavBar() {
             </div>
           </div>
         </div>
-      )) || (
+      ) : (
         // <nav className=" fixed top-0 left-0 border-r p-3 h-screen max-w-244px max-tablet:hidden max-desktop:max-w-px">
         <nav className="border-[1px] border-[#dbdbdb] border-solid border-t-0 border-b-0 border-l-0 fixed top-0 left-0  px-3 py-3  min-h-100vh max-tablet:hidden desktop:min-w-244px">
           <div className=" w-full h-[70px] flex items-center justify-start pl-3 mb-5">
