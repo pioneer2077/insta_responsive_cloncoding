@@ -10,8 +10,12 @@ export default function Avatar({ image, big, border }: Props) {
   return (
     <div className={getBigCircleStyle(big, border)}>
       <div className={getSmallCircleStyle(big)}>
-        <div className="rounded-full overflow-hidden flex items-center justify-center">
-          <img src={image ?? undefined} alt="user profile" />
+        <div className="rounded-full overflow-hidden h-[58px] w-[58px]">
+          <img
+            className="object-cover h-full w-full"
+            src={image ?? undefined}
+            alt="user profile"
+          />
         </div>
       </div>
     </div>
@@ -30,8 +34,9 @@ function getBigCircleStyle(big: boolean, border: boolean): string {
 
 function getSmallCircleStyle(big: boolean): string {
   return clsx({
-    "w-11 h-11": big === false,
-    "w-[61px] h-[61px] bg-white": big === true,
-    "rounded-full overflow-hidden": true,
+    "flex justify-center items-center rounded-full overflow-hidden w-11 h-11 bg-white":
+      big === false,
+    "flex justify-center items-center rounded-full overflow-hidden w-[61px] h-[61px] bg-white":
+      big === true,
   });
 }
