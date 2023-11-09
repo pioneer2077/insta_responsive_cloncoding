@@ -1,45 +1,25 @@
 "use client";
 import React from "react";
 import NavItemUser from "./ui/NavItemUser";
+import useSWR from "swr";
+import { UserData } from "../type/user";
 
 export default function ShowOtherMain() {
+  const { data: LoginUserInfo, isLoading } = useSWR<UserData>("api/me");
+
   return (
     <>
-      <NavItemUser
-        onClick={() => null}
-        description="torado155"
-        title="toratora1554"
-        image="https://lh3.googleusercontent.com/a/ACg8ocJ0wiq-Ju7zP28u075jMYbafuYTJgx6VDJth-IYkJduxlY=s96-c"
-        text="팔로우"
-      />
-      <NavItemUser
-        onClick={() => null}
-        description="torado155"
-        title="toratora1554"
-        image="https://lh3.googleusercontent.com/a/ACg8ocJ0wiq-Ju7zP28u075jMYbafuYTJgx6VDJth-IYkJduxlY=s96-c"
-        text="팔로우"
-      />
-      <NavItemUser
-        onClick={() => null}
-        description="torado155"
-        title="toratora1554"
-        image="https://lh3.googleusercontent.com/a/ACg8ocJ0wiq-Ju7zP28u075jMYbafuYTJgx6VDJth-IYkJduxlY=s96-c"
-        text="팔로우"
-      />
-      <NavItemUser
-        onClick={() => null}
-        description="torado155"
-        title="toratora1554"
-        image="https://lh3.googleusercontent.com/a/ACg8ocJ0wiq-Ju7zP28u075jMYbafuYTJgx6VDJth-IYkJduxlY=s96-c"
-        text="팔로우"
-      />
-      <NavItemUser
-        onClick={() => null}
-        description="torado155"
-        title="toratora1554"
-        image="https://lh3.googleusercontent.com/a/ACg8ocJ0wiq-Ju7zP28u075jMYbafuYTJgx6VDJth-IYkJduxlY=s96-c"
-        text="팔로우"
-      />
+      {!LoginUserInfo ? (
+        <>스켈레톤</>
+      ) : (
+        <NavItemUser
+          onClick={() => null}
+          description={LoginUserInfo.id}
+          title={LoginUserInfo.name}
+          image={LoginUserInfo.image}
+          text="팔로우"
+        />
+      )}
     </>
   );
 }

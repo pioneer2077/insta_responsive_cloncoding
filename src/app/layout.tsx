@@ -18,6 +18,7 @@ import ColorButton from "./components/ui/ColorButton";
 import NavBar from "./components/NavBar";
 import { SessionProvider } from "next-auth/react";
 import AuthContext from "@/context/AuthContext";
+import SWRConfigContext from "@/context/SWRConfigContext";
 const openSans = Open_Sans({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -54,7 +55,9 @@ export default function RootLayout({
       <body className="">
         <AuthContext>
           <NavBar />
-          <main>{children}</main>
+          <main>
+            <SWRConfigContext>{children}</SWRConfigContext>
+          </main>
         </AuthContext>
       </body>
     </html>

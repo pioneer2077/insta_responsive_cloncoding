@@ -1,14 +1,15 @@
 import React from "react";
-import { User } from "../type/user";
+import { Follower } from "../type/user";
 import Avatar from "./Avatar";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import Link from "next/link";
+
 type Props = {
-  user: User[];
+  user: Follower[];
 };
 
 export default function FollowUserCarousel({ user }: Props) {
-  console.log(user);
   const responsive = {
     all: {
       breakpoint: { max: 1000000, min: 0 },
@@ -17,15 +18,16 @@ export default function FollowUserCarousel({ user }: Props) {
   };
   return (
     <Carousel responsive={responsive}>
-      {user.map((item: any, i: any) => {
+      {user.map((item: Follower, i: any) => {
         return (
-          <button
+          <Link
+            href={`/user/${item.username}`}
             key={i}
             className="flex-col h-20 flex justify-around items-center"
           >
-            <Avatar big={true} border={true} image={user[i].image} />
-            <p className=" text-xs">{user[i].name}</p>
-          </button>
+            <Avatar big={true} border={true} image={item.image} />
+            <p className=" text-xs">{item.username}</p>
+          </Link>
         );
       })}
     </Carousel>

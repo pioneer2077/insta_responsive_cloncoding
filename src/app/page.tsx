@@ -3,7 +3,6 @@ import FollowingBar from "./components/FollowingBar";
 import SideBar from "./components/SideBar";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
-import { getProfile } from "@/fetcher/user";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -13,15 +12,20 @@ export default async function Home() {
     redirect("/auth/signin");
   }
   return (
-    <section className="max-tablet:ml-0 max-desktop:ml-72px desktop:ml-244px h-screen w-auto overflow-auto flex justify-center pt-5">
+    <section className="max-tablet:ml-0 max-desktop:ml-72px desktop:ml-244px h-screen w-auto flex justify-center pt-5">
       <div className="   w-[1013px] flex justify-center">
-        <div className=" w-630px h-full">
-          <div className=" h-28 w-full">
-            <FollowingBar user={user} />
-          </div>
+        <div className=" w-630px h-full ">
+          <FollowingBar />
+          <div className="bg-primary w-full h-[500px]">d</div>
+          <div className="bg-primary w-full h-[500px]">d</div>
+          <div className="bg-primary w-full h-[500px]">d</div>
+          <div className="bg-primary w-full h-[500px]">d</div>
+          <div className="bg-primary w-full h-[500px]">d</div>
+          <div className="bg-primary w-full h-[500px]">d</div>
+          <div className="bg-primary w-full h-[500px]">d</div>
         </div>
         <div className=" w-383px h-full max-lap:hidden  pt-5 ">
-          <SideBar user={user} />
+          <SideBar />
         </div>
       </div>
     </section>
