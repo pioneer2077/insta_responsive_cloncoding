@@ -18,13 +18,6 @@ export default function NavItemUser({
   const props = { description, title, image };
   return (
     <div className=" flex items-center  py-1 px-4 justify-between ">
-      {/* <div className=" flex items-center">
-        <Avatar big={false} border={false} image={image} />
-        <div className=" pl-3">
-          <p className=" text-sm font-semibold">{title}</p>
-          <p className=" text-sm font-medium text-gray">{description}</p>
-        </div>
-      </div> */}
       <UserButton {...props} />
       <ColorButton
         buttonColor="white"
