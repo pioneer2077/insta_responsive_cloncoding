@@ -12,9 +12,9 @@ export default function FollowingBar() {
   const { data, isLoading } = useSWR<UserData>("api/me");
   return (
     <div className=" h-28 w-full">
-      <div className=" h-full w-full">
+      <div className=" h-full w-full ">
         {isLoading ? (
-          <div className="w-full h-full flex justify-center items-center">
+          <div className="h-full flex justify-center items-center">
             <ScaleLoader />
           </div>
         ) : (

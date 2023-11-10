@@ -4,8 +4,6 @@ import Avatar from "./Avatar";
 import Carousel, { ArrowProps } from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Link from "next/link";
-import LeftArrow from "@/image/LeftArrow.svg";
-import RightArrow from "@/image/RightArrow.svg";
 import ArrowButton from "./ui/ArrowButton";
 type Props = {
   user: Follower[];
@@ -17,9 +15,13 @@ export default function FollowUserCarousel(
 ) {
   const responsive = {
     all: {
-      breakpoint: { max: 1000000, min: 0 },
+      breakpoint: { max: 100000, min: 0 },
       items: 8,
     },
+    // tablet: {
+    //   breakpoint: { max: 500, min: 0 },
+    //   items: 7,
+    // },
   };
   return (
     <Carousel
@@ -35,7 +37,7 @@ export default function FollowUserCarousel(
             key={item.username}
             className="flex-col h-20 flex justify-around items-center cursor-pointer"
           >
-            <Avatar big={true} border={true} image={item.image} />
+            <Avatar size={"lg"} border={true} image={item.image} />
             <p className=" text-xs">{item.username}</p>
           </Link>
         );

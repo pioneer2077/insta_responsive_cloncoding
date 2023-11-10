@@ -3,6 +3,7 @@ import FollowingBar from "./components/FollowingBar";
 import SideBar from "./components/SideBar";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
+import Posts from "./components/Posts";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -14,17 +15,11 @@ export default async function Home() {
   return (
     <section className="max-tablet:ml-0 max-desktop:ml-72px desktop:ml-244px h-screen w-auto flex justify-center pt-5">
       <div className="   w-[1013px] flex justify-center">
-        <div className=" w-630px h-full ">
+        <div className=" w-630px h-full pt-3">
           <FollowingBar />
-          <div className="bg-primary w-full h-[500px]">d</div>
-          <div className="bg-primary w-full h-[500px]">d</div>
-          <div className="bg-primary w-full h-[500px]">d</div>
-          <div className="bg-primary w-full h-[500px]">d</div>
-          <div className="bg-primary w-full h-[500px]">d</div>
-          <div className="bg-primary w-full h-[500px]">d</div>
-          <div className="bg-primary w-full h-[500px]">d</div>
+          <Posts />
         </div>
-        <div className=" w-383px h-full max-lap:hidden  pt-5 ">
+        <div className=" w-383px h-full max-lap:hidden  pt-7 ">
           <SideBar />
         </div>
       </div>

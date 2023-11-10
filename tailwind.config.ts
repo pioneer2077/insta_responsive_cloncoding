@@ -53,12 +53,17 @@ const config: Config = {
       blue: "#4193ef",
       white: "#ffffff",
       gray: "#737373",
+      hoverGray: "#8e8e8e",
     },
 
     screens: {
       tablet: "719px",
       lap: "1152px",
       desktop: "1260px",
+    },
+    transitionProperty: {
+      height: "height",
+      text: "text",
     },
   },
   plugins: [],

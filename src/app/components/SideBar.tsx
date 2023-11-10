@@ -13,7 +13,7 @@ export default function SideBar() {
         <ShowMeMain />
       </div>
       <div className=" pt-5">
-        <p className=" pb-4 text-sm text-gray font-semibold">
+        <p className=" pl-4 pb-4 text-sm text-gray font-semibold">
           회원님을 위한 추천
         </p>
         <ShowOtherMain />

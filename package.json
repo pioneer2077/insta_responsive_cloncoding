@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sanity/image-url": "^1.0.2",
     "@svgr/webpack": "^8.1.0",
     "axios": "^1.6.0",
     "clsx": "^2.0.0",
@@ -22,7 +23,8 @@
     "react-multi-carousel": "^2.8.4",
     "react-spinners": "^0.13.8",
     "ser": "^0.1.2",
-    "swr": "^2.2.4"
+    "swr": "^2.2.4",
+    "timeago.js": "^4.0.2"
   },
   "devDependencies": {
     "@types/node": "^20",

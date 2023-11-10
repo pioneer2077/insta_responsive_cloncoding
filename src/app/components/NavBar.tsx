@@ -74,7 +74,7 @@ export default function NavBar() {
         <div>
           <nav className="border-[1px] h-full border-[#dbdbdb] border-solid border-t-0 border-b-0 border-l-0 fixed top-0 left-0 bottom-0 px-3 py-3  min-h-100vh max-tablet:hidden desktop:min-w-244px justify-between">
             <div>
-              <div className=" h-[70px] flex items-center justify-start pl-3 mb-5">
+              <div className=" h-[70px] flex items-center justify-start pl-3 mb-5 pt-4">
                 <Link href={"/"}>
                   <Instagram className=" max-desktop:hidden" />
                   <Instagram_logo className=" hidden max-desktop:block" />
@@ -109,13 +109,14 @@ export default function NavBar() {
             )}
             <div className="">
               <SvgButton
+                hoverEffect="bg"
                 title="더보기"
                 onClick={toggleMenu}
                 svg={<Nav_hamburger />}
               />
               {user && (
                 <Link href={`/user/${user.username}`}>
-                  <Avatar big={false} border={true} image={user.image} />
+                  <Avatar size={"md"} border={true} image={user.image} />
                 </Link>
               )}
             </div>
