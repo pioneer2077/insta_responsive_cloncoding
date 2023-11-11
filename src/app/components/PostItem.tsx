@@ -6,6 +6,7 @@ import PostFooter from "./post/PostFooter";
 import { FullPost, SimplePost } from "@/model/post";
 type Props = {
   postData: SimplePost;
+  priority?: boolean;
 };
 export default function PostItem({
   postData: {
@@ -18,9 +19,11 @@ export default function PostItem({
     userImage,
     username,
   },
+  priority,
 }: Props) {
+  console.log(priority);
   const headerData = { createdAt, username, userImage, id };
-  const contentData = { image };
+  const contentData = { image, priority };
   const footerData = { likes, comments, username, text };
   return (
     <article className=" w-[470px] pb-4 mb-5 border-b-[1px] border-solid border-gray-300">

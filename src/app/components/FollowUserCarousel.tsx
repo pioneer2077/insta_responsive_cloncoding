@@ -27,7 +27,7 @@ export default function FollowUserCarousel(
     <Carousel
       customLeftArrow={<ArrowButton direction="left" onClick={onClick} />}
       customRightArrow={<ArrowButton direction="right" onClick={onClick} />}
-      containerClass="h-full w-full relative"
+      containerClass="h-full w-full relative "
       responsive={responsive}
     >
       {user.map((item: Follower) => {
@@ -35,7 +35,7 @@ export default function FollowUserCarousel(
           <Link
             href={`/user/${item.username}`}
             key={item.username}
-            className="flex-col h-20 flex justify-around items-center cursor-pointer"
+            className=" flex-col h-20 flex justify-around items-center cursor-pointer"
           >
             <Avatar size={"lg"} border={true} image={item.image} />
             <p className=" text-xs">{item.username}</p>

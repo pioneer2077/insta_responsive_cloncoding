@@ -16,7 +16,9 @@ export default function Posts() {
         <p>게시물이 없습니다.</p>
       ) : postsData && postsData.length > 0 ? (
         postsData.map((post: SimplePost, i: number) => {
-          return <PostItem postData={post} key={postsData[i].id} />;
+          return (
+            <PostItem postData={post} key={postsData[i].id} priority={i < 2} />
+          );
         })
       ) : null}
     </section>
