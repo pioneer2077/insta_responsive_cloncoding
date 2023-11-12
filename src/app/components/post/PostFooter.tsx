@@ -6,6 +6,7 @@ import Modal from "../modal/Modal";
 import { createPortal } from "react-dom";
 import DetailPostModal from "../modal/detailModal/DetailPostModal";
 import { SimplePost } from "@/model/post";
+import PostModal from "../modal/detailModal/PostModal";
 type Props = {
   postData: SimplePost;
 };
@@ -22,7 +23,6 @@ export default function PostFooter({
   },
 }: Props) {
   const [showModal, setShowModal] = useState(false);
-  const portal = document.getElementById("portal");
   const props = {
     comments,
     createdAt,
@@ -53,15 +53,18 @@ export default function PostFooter({
       <div className=" ml-1 flex items-center w-full">
         <CommentForm />
       </div>
-      {showModal &&
-        createPortal(
-          <Modal
-            children={<DetailPostModal postData={props} />}
-            isOpen={showModal}
-            onClose={() => setShowModal(false)}
-          />,
-          portal!
-        )}
+      {showModal && (
+        // <Modal
+        //   children={<DetailPostModal postData={props} />}
+        //   isOpen={showModal}
+        //   onClose={() => setShowModal(false)}
+        // />
+        <Modal>
+          <PostModal onClose={() => setShowModal(false)}>
+            <DetailPostModal postData={props} />
+          </PostModal>
+        </Modal>
+      )}
     </div>
   );
 }

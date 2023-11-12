@@ -25,3 +25,22 @@ export async function getPostsByAuthor(username: string) {
       }))
     );
 }
+
+//게시글은 게시글인데, id가 동일한 게시글의 댓글만 가져오도록 한다.
+export async function getPost(id: string) {
+  return client
+    .fetch(
+      `*[_type == "post" && _id =="${id}"][0]{
+    ...,
+    "username": author->username,
+    "userImage": author->image,
+    "image": photo,
+    "likes": likes[]->username,
+    comments[]{comment, "username":author->username, "image":author->image},
+    "id":_id,
+    "createdAt":_createdAt,
+  } 
+  `
+    )
+    .then((posts) => ({ ...posts, image: urlFor(posts.image) }));
+}

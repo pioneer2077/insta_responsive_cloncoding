@@ -1,25 +1,21 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
 import Search from "@/image/nav/Search.svg";
 import { INavItem } from "./type/nav";
 import ROUTES from "./routes";
-import NavItem from "./components/NavItem";
 import {
   AddPost,
   Clicked_Home_icon,
   Clicked_Search_Icon,
   Home_icon,
-  Instagram,
-  Instagram_logo,
 } from "@/image/nav/index";
-import ColorButton from "./components/ui/ColorButton";
+
 import NavBar from "./components/NavBar";
-import { SessionProvider } from "next-auth/react";
+
 import AuthContext from "@/context/AuthContext";
 import SWRConfigContext from "@/context/SWRConfigContext";
-import icon from "@/app/favicon.svg";
+
 const openSans = Open_Sans({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Instagram",
