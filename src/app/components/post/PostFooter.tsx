@@ -5,16 +5,34 @@ import ActionBar from "../ActionBar";
 import Modal from "../modal/Modal";
 import { createPortal } from "react-dom";
 import DetailPostModal from "../modal/detailModal/DetailPostModal";
+import { SimplePost } from "@/model/post";
 type Props = {
-  likes: string[];
-  comments: number;
-  text: string;
-  username: string;
+  postData: SimplePost;
 };
-export default function PostFooter({ username, comments, likes, text }: Props) {
+export default function PostFooter({
+  postData: {
+    comments,
+    createdAt,
+    id,
+    image,
+    likes,
+    text,
+    userImage,
+    username,
+  },
+}: Props) {
   const [showModal, setShowModal] = useState(false);
   const portal = document.getElementById("portal");
-
+  const props = {
+    comments,
+    createdAt,
+    id,
+    image,
+    likes,
+    text,
+    userImage,
+    username,
+  };
   return (
     <div>
       <ActionBar />
@@ -38,7 +56,7 @@ export default function PostFooter({ username, comments, likes, text }: Props) {
       {showModal &&
         createPortal(
           <Modal
-            children={<DetailPostModal />}
+            children={<DetailPostModal postData={props} />}
             isOpen={showModal}
             onClose={() => setShowModal(false)}
           />,

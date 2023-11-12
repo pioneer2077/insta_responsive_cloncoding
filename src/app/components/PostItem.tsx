@@ -23,12 +23,21 @@ export default function PostItem({
 }: Props) {
   const headerData = { createdAt, username, userImage, id };
   const contentData = { image, priority };
-  const footerData = { likes, comments, username, text };
+  const footerData = {
+    comments,
+    createdAt,
+    id,
+    image,
+    likes,
+    text,
+    userImage,
+    username,
+  };
   return (
     <article className=" w-[470px] pb-4 mb-5 border-b-[1px] border-solid border-gray-300">
       <PostHeader {...headerData} />
       <PostContent {...contentData} />
-      <PostFooter {...footerData} />
+      <PostFooter postData={footerData} />
     </article>
   );
 }
