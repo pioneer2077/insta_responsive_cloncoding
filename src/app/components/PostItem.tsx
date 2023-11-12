@@ -21,7 +21,6 @@ export default function PostItem({
   },
   priority,
 }: Props) {
-  console.log(priority);
   const headerData = { createdAt, username, userImage, id };
   const contentData = { image, priority };
   const footerData = { likes, comments, username, text };

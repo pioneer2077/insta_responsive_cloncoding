@@ -14,7 +14,7 @@ export default async function Home() {
   }
   return (
     <section className=" max-tablet:ml-0 max-desktop:ml-72px desktop:ml-244px flex justify-center pt-5">
-      <div className="   w-[1013px] flex justify-center">
+      <div className=" w-[1013px] flex justify-center">
         <div className=" w-630px h-full pt-3">
           <FollowingBar />
           <Posts />

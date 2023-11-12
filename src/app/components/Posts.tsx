@@ -7,7 +7,6 @@ import { SimplePost } from "@/model/post";
 
 export default function Posts() {
   const { data: postsData, isLoading } = useSWR<SimplePost[]>("api/posts");
-  console.log("🚀 ~ file: Posts.tsx:10 ~ Posts ~ postsData:", postsData);
 
   return (
     <section className="w-full flex-col flex items-center mt-10">

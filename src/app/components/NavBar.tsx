@@ -121,7 +121,7 @@ export default function NavBar() {
               )}
             </div>
           </nav>
-          <div className=" bg-white z-10 justify-between items-center w-full  hidden max-tablet:flex border-[1px] border-[#dbdbdb] border-solid border-t-0 border-r-0 border-l-0  px-3 py-3">
+          <div className=" fixed bg-white z-10 justify-between items-center w-full  hidden max-tablet:flex border-[1px] border-[#dbdbdb] border-solid border-t-0 border-r-0 border-l-0  px-3 py-3">
             <Instagram />
             <div>
               <div>검색창</div>

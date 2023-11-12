@@ -4,6 +4,7 @@ import CommentForm from "../CommentForm";
 import ActionBar from "../ActionBar";
 import Modal from "../modal/Modal";
 import { createPortal } from "react-dom";
+import DetailPostModal from "../modal/detailModal/DetailPostModal";
 type Props = {
   likes: string[];
   comments: number;
@@ -36,7 +37,11 @@ export default function PostFooter({ username, comments, likes, text }: Props) {
       </div>
       {showModal &&
         createPortal(
-          <Modal isOpen={showModal} onClose={() => setShowModal(false)} />,
+          <Modal
+            children={<DetailPostModal />}
+            isOpen={showModal}
+            onClose={() => setShowModal(false)}
+          />,
           portal!
         )}
     </div>
