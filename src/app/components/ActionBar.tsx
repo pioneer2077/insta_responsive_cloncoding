@@ -7,7 +7,7 @@ import BookMark from "@/image/post/BookMark.svg";
 export default function ActionBar() {
   return (
     <>
-      <div className="w-[470px] flex justify-between items-center">
+      <div className="px-2 flex justify-between items-center">
         <div className="flex -ml-[10px]  justify-start ">
           <SvgButton
             hoverArea="md"

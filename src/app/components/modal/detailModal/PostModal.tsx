@@ -7,7 +7,7 @@ type Props = {
 export default function PostModal({ children, onClose }: Props) {
   return (
     <section
-      className=" fixed top-0 left-0 flex flex-col justify-center items-center w-full h-full z-10 bg-[#1c1e21]/70"
+      className=" fixed top-0 left-0 flex flex-col justify-center items-center w-full h-full z-10 bg-[#1c1e21]/70  px-16  py-6 "
       onClick={(event) => {
         if (event.target === event.currentTarget) {
           onClose();

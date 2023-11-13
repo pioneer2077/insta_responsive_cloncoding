@@ -5,6 +5,7 @@ import Menu from "@/image/post/menu.svg";
 import { format, render, cancel, register } from "timeago.js";
 import koLocale from "timeago.js/lib/lang/ko";
 import { urlFor } from "@/app/service/sanityImage";
+import AvatarHeader from "../ui/AvatarHeader";
 type Props = {
   createdAt: string;
   username: string;
@@ -18,15 +19,5 @@ export default function PostHeader({
   id,
 }: Props) {
   const as = format(createdAt);
-  return (
-    <div className=" flex justify-between items-center pl-1 pb-3">
-      <div className="flex items-center gap-4">
-        <Avatar size={"sm"} border={false} image={userImage} />
-
-        <p className=" text-sm">{username}</p>
-        <p className="text-sm">&#183;&nbsp;&nbsp;{as}</p>
-      </div>
-      <Menu />
-    </div>
-  );
+  return <AvatarHeader date={as} userImage={userImage} username={username} />;
 }

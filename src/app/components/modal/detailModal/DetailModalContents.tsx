@@ -8,22 +8,15 @@ type Props = {
 };
 export default function DetailModalContents({ image }: Props) {
   return (
-    <div className=" justify-center items-center bg-[#000000] overflow-hidden pr-[1px]">
+    <div className=" h-full max-tablet:h-auto justify-center items-center bg-[#000000] overflow-hidden basis-3/5  flex">
       <Image
-        onLoad={(e: React.SyntheticEvent<HTMLImageElement, Event>) =>
-          console.log(e.currentTarget.height)
-        }
         id="ModalImage"
-        alt=""
+        alt="postImage"
+        src={image}
         width={500}
         height={500}
-        src={image}
-        className="  object-contain w-full h-full"
+        className=" object-contain w-full h-full"
       ></Image>
     </div>
   );
-}
-
-{
-  /*  */
 }

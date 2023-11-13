@@ -4,7 +4,7 @@ import SvgButton from "./ui/SvgButton";
 import Emoticon from "@/image/Emoticon.svg";
 export default function CommentForm() {
   return (
-    <form action="" className=" flex w-full">
+    <form action="" className=" p-2 flex w-full">
       <input
         className=" placeholder:text-sm placeholder:text-[#737373] outline-none text-sm leading-tight grow"
         type="
