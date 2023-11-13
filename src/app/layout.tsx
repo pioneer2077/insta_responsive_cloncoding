@@ -54,9 +54,9 @@ export default function RootLayout({
     <html className={openSans.className}>
       <body>
         <AuthContext>
-          <NavBar />
           <main>
             <SWRConfigContext>
+              <NavBar />
               <div id="portal"></div>
               {children}
             </SWRConfigContext>
